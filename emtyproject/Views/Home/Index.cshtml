@@ -1,0 +1,45 @@
+﻿@model IEnumerable<emtyproject.Models.ViewModels.EmployeeViewModel>
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="row">
+    <div class="col-12">
+        <h2>Employee List</h2>
+        <div class="d-flex justify-content-end">
+            @Html.ActionLink("Add New", "Insert", new { }, new {@Class="btn btn-primary btn-sm"});
+
+        </div>
+        <table class=" table table-bordered table-striped table-sm mt-1">
+            <thead class="table-primary">
+                <tr>
+                    <th>@Html.DisplayNameFor(x => x.EmployeeId)</th>
+                    <th>@Html.DisplayNameFor(x => x.EmployeeName)</th>
+                    <th>@Html.DisplayNameFor(x => x.JoinDate)</th>
+                    <th>@Html.DisplayNameFor(x => x.Grade)</th>
+                    <th>@Html.DisplayNameFor(x => x.Tanure)</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                    @foreach (var em in Model)
+                    {
+                        <tr>
+                            <td>@Html.DisplayFor(x => em.EmployeeId)</td>
+                            <td>@Html.DisplayFor(x => em.EmployeeName)</td>
+                            <td>@Html.DisplayFor(x => em.JoinDate)</td>
+                            <td>@Html.DisplayFor(x => em.Grade)</td>
+                            <td>@Html.DisplayFor(x => em.Tanure)</td>
+                            <td>
+                                @Html.ActionLink("Edit", "Edit", "Home", new { id = em.EmployeeId }, new { @class = "btn btn-outline-primary btn-sm" })
+                                @Html.ActionLink("Delete", "Delete", "Home", new { id = em.EmployeeId }, new { @class = "btn btn-outline-danger btn-sm" })
+                            </td>
+
+                        </tr>
+                    }
+            </tbody>
+           
+            </table>  
+    </div>
+</div>
+

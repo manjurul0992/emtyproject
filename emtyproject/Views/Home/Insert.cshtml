@@ -1,0 +1,51 @@
+﻿@model emtyproject.Models.Employee
+@{
+    ViewBag.Title = "Insert";
+}
+
+<h2>Insert</h2>
+
+<div class="row">
+    <div class="col">
+        <h2>Add New Employee</h2>
+        @using (Html.BeginForm("Insert", "Home", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+        {
+            @Html.ValidationSummary()
+
+            <div class="row mb-2">
+                <label class="col-form-label col-2">Employee Name</label>
+                <div class="col-6">
+                    @Html.TextBoxFor(x => x.EmployeeName, new { @class = "form-control" })
+                </div>
+                <div class="col-4">
+                    @Html.ValidationMessageFor(x => x.EmployeeName, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="row mb-2">
+                <label class="col-form-label col-2">Join Date</label>
+                <div class="col-6">
+                    @Html.TextBoxFor(x => x.JoinDate, new { @class = "form-control", type = "date" })
+                </div>
+                <div class="col-4">
+                    @Html.ValidationMessageFor(x => x.JoinDate, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="row mb-2">
+                <label class="col-form-label col-2">Grade</label>
+                <div class="col-6">
+                    @Html.EnumDropDownListFor(x => x.Grade, "---Select One------", new { @class = "form-control" })
+                </div>
+                <div class="col-4">
+                    @Html.ValidationMessageFor(x => x.Grade, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="row mb-2">
+                <div class="col-2">&nbsp;</div>
+                <div class="col-6">
+                    <button type="submit" class="btn btn-outline-primary">Save</button>
+                </div>
+            </div>
+
+        }
+    </div>
+</div>
